@@ -12,12 +12,25 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Create new application
+// Create new application (Add User) + auto-accept + send email
 router.post("/", async (req, res) => {
   try {
-    const newApp = new Application(req.body);
+    // Create new application with status 'accepted' if admin adds user
+    const newApp = new Application({ ...req.body, status: "accepted" });
     await newApp.save();
-    res.status(201).json({ msg: "Application submitted successfully!", application: newApp });
+
+    // Send acceptance email
+    await transporter.sendMail({
+      from: `"Lifewood Team" <${process.env.EMAIL_USER}>`,
+      to: newApp.email,
+      subject: "🎉 Welcome to Lifewood Training Program!",
+      html: `<h1>Congratulations, ${newApp.firstName}!</h1>
+             <p>Your account for <strong>${newApp.project}</strong> has been successfully created and accepted.</p>
+             <p>We’ll contact you with next steps soon.</p>
+             <br/><p>Best regards,</p><p><strong>Lifewood Team</strong></p>`,
+    });
+
+    res.status(201).json({ msg: "User added, accepted, and email sent!", application: newApp });
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: "Server error creating application" });
@@ -66,7 +79,6 @@ router.put("/:id/accept", async (req, res) => {
     app.status = "accepted";
     await app.save();
 
-    // Send email
     await transporter.sendMail({
       from: `"Lifewood Team" <${process.env.EMAIL_USER}>`,
       to: app.email,
@@ -93,7 +105,6 @@ router.put("/:id/decline", async (req, res) => {
     app.status = "declined";
     await app.save();
 
-    // Optional: send decline email
     await transporter.sendMail({
       from: `"Lifewood Team" <${process.env.EMAIL_USER}>`,
       to: app.email,
