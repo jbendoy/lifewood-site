@@ -125,3 +125,10 @@
 .logout-btn:hover {
   background-color: #c0392b;
 }
+.add-user-btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  margin-left: auto; 
+  display: block;    
+}
