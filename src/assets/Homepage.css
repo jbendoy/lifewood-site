@@ -1,0 +1,291 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', Arial, sans-serif;
+  background-color: #fff;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999; 
+}
+
+.navbar .logo {
+  height: 40px;
+  width: auto;
+}
+
+.navbar nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+  color: #133020;
+}
+
+.navbar nav a.login-button {
+  padding: 8px 18px;
+  margin-left: 20px;
+  background-color: #133020; 
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.navbar nav a.login-button:hover {
+  background-color: #1A4A31; 
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 50px;
+  background-color: #133020;
+  color: #ffffff;
+}
+
+.hero-left h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero-left p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+.hero-left button {
+  padding: 12px 30px;
+  background-color: #ffffff;
+  color: #133020;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.hero-left button:hover {
+  background-color: #ffc370; /* Lifewood Saffron */
+  color: #133020;
+}
+
+.hero-right .hero-image {
+  max-width: 900px;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 50px;
+  background-color: #133020; 
+}
+
+.feature-card {
+  background-color: #f8fafc; 
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  flex: 1;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h2 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #133020;
+}
+
+.feature-card p {
+  color: #334155;
+  font-size: 15px;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffffff;
+  color: #2c3e50;
+  padding: 40px 50px;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.footer-content p {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.footer-content nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.footer-content nav a:hover {
+  color: #133020;
+}
+
+
+/* --- STYLES FOR POPUP MODAL & APPLICATION FORM --- */
+
+/* The dark background overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* The white popup box */
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* The 'X' close button */
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  color: #888;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Form specific styles */
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.application-form h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #133020;
+}
+
+.application-form input,
+.application-form textarea,
+.application-form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: 'Manrope', Arial, sans-serif;
+}
+
+.application-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.application-form button[type="submit"] {
+  padding: 12px 30px;
+  background-color: #133020; /* Lifewood Dark Green */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.application-form button[type="submit"]:hover {
+  background-color: #1A4A31; /* Darker Green */
+}
+
+.application-form button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .hero-left {
+    margin-top: 30px;
+  }
+  .features {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .hero-right .hero-image {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  .navbar nav a {
+    display: none; /* Hide nav links on small screens */
+  }
+  .navbar nav a.login-button {
+    display: block; /* Ensure login button is always visible */
+  }
+  .footer-content nav {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+}

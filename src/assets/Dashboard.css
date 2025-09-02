@@ -1,0 +1,127 @@
+/* Dashboard.css */
+
+/* General Dashboard */
+.dashboard {
+  font-family: "Manrope", Arial, sans-serif;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky; /* Make navbar sticky */
+  top: 0;
+  z-index: 999; /* Ensure it stays on top */
+}
+
+.navbar .logo {
+  height: 40px;
+  width: auto;
+}
+
+.navbar nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+  color: #3498db;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  flex: 1;
+  padding: 30px;
+}
+
+.dashboard-content h2 {
+  margin-bottom: 20px;
+  color: #1a4a31;
+}
+
+/* Table */
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-table th {
+  background-color: #1a4a31;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.dashboard-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Buttons */
+.btn {
+  background-color: #1a4a31;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin: 3px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #145326;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffffff;
+  color: #2c3e50;
+  padding: 40px 50px;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.footer-content p {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.footer-content nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.footer-content nav a:hover {
+  color: #3498db;
+}
+.logout-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+}

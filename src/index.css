@@ -1,0 +1,10 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Any other global styles */
+body {
+  margin: 0;
+  font-family: 'Manrope', sans-serif; /* Using Manrope as per your typography guidelines */
+}
