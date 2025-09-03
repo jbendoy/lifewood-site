@@ -4,12 +4,14 @@ const dotenv = require("dotenv");
 dotenv.config();
 const cors = require("cors");
 
-dotenv.config();
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// ✅ Serve uploaded files from the uploads folder
+app.use("/uploads", express.static("uploads"));
 
 // Connect MongoDB
 mongoose.connect(process.env.MONGO_URI, {
@@ -20,7 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
   .catch(err => console.error("❌ MongoDB Error:", err));
 
 // Routes
-const applicationRoutes = require("./routes/application");
+const applicationRoutes = require("./routes/Application");
 const authRoutes = require("./middleware/auth");
 
 app.use("/api/applications", applicationRoutes);

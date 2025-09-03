@@ -8,6 +8,7 @@ const applicationSchema = new mongoose.Schema({
   experience: { type: String },
   email: { type: String, required: true },
   project: { type: String, required: true },
+  resume: { type: String, required: true },
   status: {
     type: String,
     enum: ["pending", "accepted", "declined"],
