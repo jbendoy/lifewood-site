@@ -143,11 +143,27 @@ router.put("/:id/accept", async (req, res) => {
     await transporter.sendMail({
       from: `"Lifewood Team" <${process.env.EMAIL_USER}>`,
       to: app.email,
-      subject: "🎉 Application Accepted!",
-      html: `<h1>Congratulations, ${app.firstName}!</h1>
-             <p>Your application for <strong>${app.project}</strong> has been accepted.</p>
-             <p>We’ll contact you with next steps soon.</p>
-             <br/><p>Best regards,</p><p><strong>Lifewood Team</strong></p>`,
+      subject: "🎉 Your Application is Accepted!",
+      html: `
+      <div style="font-family: 'Manrope', sans-serif; background-color:#f5f7f6; padding:30px;">
+        <div style="max-width:600px; margin:auto; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+          <div style="background-color:#046241; padding:20px; text-align:center;">
+            <h1 style="color:#ffffff; margin:0; font-size:24px;">Lifewood Team</h1>
+          </div>
+          <div style="padding:30px; color:#222222;">
+            <h2 style="color:#028a63;">Congratulations, ${app.firstName}!</h2>
+            <p>Your application for <strong>${app.project}</strong> has been <strong>accepted</strong>.</p>
+            <p>We are excited to have you on board and will contact you with the next steps soon.</p>
+            <p style="margin-top:20px;">Keep up the great work!</p>
+          </div>
+          <div style="background-color:#e6f0ed; padding:20px; text-align:center; font-size:14px; color:#555555;">
+            <p>Best regards,</p>
+            <p><strong>Lifewood Team</strong></p>
+            <p style="margin-top:10px;"><a href="https://yourlifewoodsite.com" style="color:#046241; text-decoration:none;">Visit our website</a></p>
+          </div>
+        </div>
+      </div>
+      `,
     });
 
     res.json({ msg: "Application accepted and email sent", application: app });
@@ -169,11 +185,26 @@ router.put("/:id/decline", async (req, res) => {
     await transporter.sendMail({
       from: `"Lifewood Team" <${process.env.EMAIL_USER}>`,
       to: app.email,
-      subject: "Application Update",
-      html: `<h1>Hi ${app.firstName},</h1>
-             <p>We regret to inform you that your application for <strong>${app.project}</strong> was not accepted.</p>
-             <p>Thank you for your interest in Lifewood Training Program!</p>
-             <br/><p>Best regards,</p><p><strong>Lifewood Team</strong></p>`,
+      subject: "Application Update from Lifewood",
+      html: `
+      <div style="font-family: 'Manrope', sans-serif; background-color:#f5f7f6; padding:30px;">
+        <div style="max-width:600px; margin:auto; background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+          <div style="background-color:#046241; padding:20px; text-align:center;">
+            <h1 style="color:#ffffff; margin:0; font-size:24px;">Lifewood Team</h1>
+          </div>
+          <div style="padding:30px; color:#222222;">
+            <h2 style="color:#028a63;">Hello ${app.firstName},</h2>
+            <p>We regret to inform you that your application for <strong>${app.project}</strong> was not accepted.</p>
+            <p>We appreciate your interest in our Lifewood Training Program and encourage you to apply for future opportunities.</p>
+          </div>
+          <div style="background-color:#e6f0ed; padding:20px; text-align:center; font-size:14px; color:#555555;">
+            <p>Best regards,</p>
+            <p><strong>Lifewood Team</strong></p>
+            <p style="margin-top:10px;"><a href="https://yourlifewoodsite.com" style="color:#046241; text-decoration:none;">Visit our website</a></p>
+          </div>
+        </div>
+      </div>
+      `,
     });
 
     res.json({ msg: "Application declined and email sent", application: app });
