@@ -4,6 +4,7 @@ import Homepage from "./components/pages/Homepage";
 import ApplicationForm from "./components/pages/ApplicationForm";
 import Login from "./components/pages/LoginForm";
 import AdminDashboard from "./components/pages/AdminDashboard";
+import AboutPage from "./components/pages/AboutPage";
 import "./index.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/apply" element={<ApplicationForm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/about-us" element={<AboutPage />} />
 
       </Routes>
     </Router>

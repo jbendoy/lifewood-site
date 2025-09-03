@@ -12,6 +12,7 @@ const Homepage = () => {
         <img src="/images/lifewood-logo.png" alt="Lifewood Logo" className="logo" />
         <nav>
           <a href="#">Home</a>
+          <a href="/about-us">About Us</a>
           <a href="/login" className="login-button">Login</a>
         </nav>
       </header>
@@ -19,13 +20,13 @@ const Homepage = () => {
       {/* Hero Section */}
       <main className="hero">
         <div className="hero-left">
-          <h1>Lifewood Training Program<span> </span></h1>
+          <h1>Welcome to Lifewood<span> </span></h1>
           <p>Empowering minds, shaping futures.</p>
-          <button onClick={() => setShowForm(true)}>Apply</button>
+          <button onClick={() => setShowForm(true)}>Apply Now!</button>
         </div>
 
         <div className="hero-right">
-          <img src="/images/devices.png" alt="Devices Mockup" className="hero-image" />
+          
         </div>
       </main>
 

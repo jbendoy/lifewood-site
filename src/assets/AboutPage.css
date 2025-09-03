@@ -1,0 +1,191 @@
+/* Page Container */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  color: #222;
+  background-color: #fff;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem; /* more consistent horizontal padding */
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Hero Title Full-Edge Text */
+.title-container {
+  width: 100%;
+  margin: 0;
+  padding: 3rem 0 2rem; /* top/bottom padding */
+  background: linear-gradient(135deg, #046241, #028a63);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Make the heading take full width and remove any horizontal margin */
+.title-container .main-heading {
+  display: block;
+  width: 100%;      /* full width of container */
+  margin: 0;        /* no auto margins */
+  padding: 0 2rem;  /* optional horizontal padding for small screens */
+  text-align: center; 
+  color: #fff;
+  font-size: 2.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Optional: remove extra left/right padding from page container */
+.page-container {
+  padding: 0; 
+}
+
+.title-divider {
+  margin: 1rem auto 0;
+  width: 80px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+
+/* About & Content Sections Full-Edge */
+.about-main-content,
+.about-hero-section {
+  width: 100%;
+  padding: 0;           /* remove horizontal padding */
+  box-sizing: border-box;
+  animation: fadeInUp 1.2s ease;
+}
+
+/* Text & Media Layouts */
+.content-layout, 
+.alternate-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center; /* vertically center */
+  justify-content: center; /* horizontally center if smaller than container */
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* Text Column Flush with Edges */
+.text-column {
+  flex: 2;
+  min-width: 200px;
+  max-width: 600px;      /* restrict max-width for more compressed text */
+  line-height: 1.6;      /* slightly tighter line height */
+  font-size: 1.15rem;
+  color: #133020;
+  margin: 0;
+  padding: 0 1.5rem;     /* smaller horizontal padding for compressed look */
+  text-align: left;
+}
+
+.text-column p {
+  margin-bottom: 1.5rem; /* slightly reduced spacing */
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.text-column p::first-letter {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #046241;
+  margin-right: 0.1rem;
+}
+
+/* Media Column */
+.media-column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center; /* horizontally center image */
+  align-items: center;     /* vertically center image */
+  animation: fadeInUp 1.5s ease;
+}
+
+/* Media Column */
+.media-column img {
+  width: 150%;            /* slightly bigger than previous 60% */
+  max-width: 700px;      /* prevent it from growing too much */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.media-column img:hover {
+  transform: scale(1.05); /* slightly larger hover scale */
+}
+
+/* Alternate Layout */
+.alternate-layout .media-column {
+  order: 1;
+  flex: 10;
+}
+
+.alternate-layout .text-column {
+  order: 2;
+  flex: 20;
+}
+
+/* Alternate Layout Images */
+.alternate-layout .media-column img {
+  width: 95%;             /* slightly bigger */
+  max-width: 1000px;      /* increase max-width */
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.alternate-layout .media-column img:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+  padding: 1.5rem 2rem;
+  color: #666;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title-container .main-heading { font-size: 2rem; }
+  .navbar, .footer-content { flex-direction: column; gap: 1rem; }
+  .content-layout, .alternate-layout { flex-direction: column; }
+  .alternate-layout .media-column img { max-width: 100%; }
+}

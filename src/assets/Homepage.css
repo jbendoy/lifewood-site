@@ -56,35 +56,41 @@ body {
   background-color: #1A4A31; 
 }
 
-/* Hero Section */
 .hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 60px 50px;
-  background-color: #133020;
+  padding: 120px 65px;
+
+  /* Correct path to image */
+  background: url('/images/green-ai.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: #ffffff;
 }
 
 .hero-left h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 70px;
+  margin-bottom: 0px;
   font-weight: 700;
+  color: #f5eedb; 
 }
 
 .hero-left p {
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: 25px;
+  margin-bottom: 60px;
   max-width: 500px;
 }
 
 .hero-left button {
-  padding: 12px 30px;
-  background-color: #ffffff;
-  color: #133020;
+  padding: 12px 15px;
+  background-color: #133020;
+  color: #ffffff;
   border: none;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
@@ -101,13 +107,13 @@ body {
   object-fit: contain;
 }
 
-/* Features Section */
+/* Features Section with gradient (optional) */
 .features {
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 60px 50px;
-  background-color: #133020; 
+  background:#ffffff /* Dark green gradient */
 }
 
 .feature-card {
