@@ -55,7 +55,7 @@ const ApplicationForm = () => {
       Object.keys(formData).forEach((key) => data.append(key, formData[key]));
       data.append("resume", resume);
 
-      const res = await axios.post("http://localhost:5000/api/applications", data, {
+      const res = await axios.post("http://${API_BASE_URL}/api/applications", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

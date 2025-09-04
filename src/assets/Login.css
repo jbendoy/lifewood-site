@@ -31,7 +31,7 @@
 .login-btn {
   width: 100%;
   padding: 12px;
-  background: #1A4A31; /* same as Submit Application button */
+  background: #1A4A31; 
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -42,5 +42,5 @@
 }
 
 .login-btn:hover {
-  background: #004999;
+  background: #ffc370;
 }
