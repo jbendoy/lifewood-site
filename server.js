@@ -22,11 +22,11 @@ mongoose.connect(process.env.MONGO_URI, {
   .catch(err => console.error("❌ MongoDB Error:", err));
 
 // Routes
-const applicationRoutes = require("./routes/Application");
-const authRoutes = require("./middleware/auth");
+const applicationRoutes = require("./routes/application");
+const auth = require("./middleware/auth"); // ✅ middleware
 
-app.use("/api/applications", applicationRoutes);
-app.use("/api/auth", authRoutes);
+// Example: protect application routes with auth
+app.use("/api/applications", auth, applicationRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
