@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Serve uploaded files from the uploads folder
+// Serve uploaded files
 app.use("/uploads", express.static("uploads"));
 
 // Connect MongoDB
@@ -22,15 +22,14 @@ mongoose.connect(process.env.MONGO_URI, {
   .catch(err => console.error("❌ MongoDB Error:", err));
 
 // Routes
-const applicationRoutes = require("./routes/application");
-const authMiddleware = require("./middleware/auth");
-const authRoutes = require("./routes/auth"); // ✅ added import
+const authRoutes = require("./routes/auth"); // Login route
+const applicationRoutes = require("./routes/application"); // Application routes
 
-// ✅ Login/Auth routes
+// Public login route
 app.use("/api/auth", authRoutes);
 
-// ✅ Application routes (protected)
-app.use("/api/applications", authMiddleware, applicationRoutes);
+// Application routes (for now unprotected)
+app.use("/api/applications", applicationRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
