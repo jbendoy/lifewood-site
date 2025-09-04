@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import API_BASE_URL from "../../config"; // Make sure this points to your backend base URL
+import API_BASE_URL from "../../config"; 
 import "../../assets/ApplicationForm.css";
 
 const ApplicationForm = () => {
