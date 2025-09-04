@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../../assets/ApplicationForm.css"; // Make sure this CSS file exists
+import API_BASE_URL from "../../config"; // Make sure this points to your backend base URL
+import "../../assets/ApplicationForm.css";
 
 const ApplicationForm = () => {
   const [formData, setFormData] = useState({
@@ -55,11 +56,16 @@ const ApplicationForm = () => {
       Object.keys(formData).forEach((key) => data.append(key, formData[key]));
       data.append("resume", resume);
 
-      const res = await axios.post("http://${API_BASE_URL}/api/applications", data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const res = await axios.post(
+        `https://${API_BASE_URL}/api/applications`,
+        data,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
 
-      showNotification(res.data.msg || "Application submitted. Please wait for approval.", "success");
+      showNotification(
+        res.data.msg || "Application submitted. Please wait for approval.",
+        "success"
+      );
 
       // Reset form
       setFormData({

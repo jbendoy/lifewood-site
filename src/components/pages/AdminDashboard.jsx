@@ -46,7 +46,7 @@ const AdminDashboard = () => {
 
   const fetchApplicants = () => {
     axios
-      .get("http://${API_BASE_URL}/api/applications")
+      .get(`https://${API_BASE_URL}/api/applications`)
       .then((res) => setApplicants(res.data))
       .catch((err) => console.error("Error fetching applicants:", err));
   };
@@ -58,7 +58,9 @@ const AdminDashboard = () => {
 
   const handleAccept = async (id) => {
     try {
-      const res = await axios.put(`http://${API_BASE_URL}/api/applications/${id}/accept`);
+      const res = await axios.put(
+        `https://${API_BASE_URL}/api/applications/${id}/accept`
+      );
       const updatedApplicant = res.data.application;
       setApplicants((prev) => prev.map((app) => (app._id === id ? updatedApplicant : app)));
       showNotification("Applicant accepted and email sent!");
@@ -70,7 +72,9 @@ const AdminDashboard = () => {
 
   const handleDecline = async (id) => {
     try {
-      const res = await axios.put(`http://${API_BASE_URL}/api/applications/${id}/decline`);
+      const res = await axios.put(
+        `https://${API_BASE_URL}/api/applications/${id}/decline`
+      );
       const updatedApplicant = res.data.application;
       setApplicants((prev) => prev.map((app) => (app._id === id ? updatedApplicant : app)));
       showNotification("Applicant declined and email sent!", "error");
@@ -82,7 +86,9 @@ const AdminDashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://${API_BASE_URL}/api/applications/${id}`);
+      await axios.delete(
+        `https://${API_BASE_URL}/api/applications/${id}`
+      );
       setApplicants((prev) => prev.filter((app) => app._id !== id));
       showNotification("Applicant deleted successfully!", "error");
     } catch (err) {
@@ -105,7 +111,7 @@ const AdminDashboard = () => {
       if (formData.resume) data.append("resume", formData.resume);
 
       const res = await axios.post(
-        "http://${API_BASE_URL}/api/applications",
+        `https://${API_BASE_URL}/api/applications`,
         data,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -153,7 +159,7 @@ const AdminDashboard = () => {
       if (formData.resume) data.append("resume", formData.resume);
 
       const res = await axios.put(
-        `https://lifewood-site-4.onrender.com/api/applications/${editingApplicant}`,
+        `https://${API_BASE_URL}/api/applications/${editingApplicant}`,
         data,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -186,19 +192,17 @@ const AdminDashboard = () => {
 
   return (
     <div className="dashboard">
-{/* Navbar */}
-<header className="navbar">
-  <img src="/images/lifewood-logo.png" alt="Lifewood Logo" className="logo" />
-  <nav>
-    <a href="/">Home</a>
-    <a href="/about-us">About Us</a>
- 
-    <button onClick={handleLogout} className="logout-btn">Logout</button>
-  </nav>
-</header>
+      {/* Navbar */}
+      <header className="navbar">
+        <img src="/images/lifewood-logo.png" alt="Lifewood Logo" className="logo" />
+        <nav>
+          <a href="/">Home</a>
+          <a href="/about-us">About Us</a>
+          <button onClick={handleLogout} className="logout-btn">Logout</button>
+        </nav>
+      </header>
 
-
-      {/* Upper-center Notification */}
+      {/* Notification */}
       {notification.msg && (
         <div className={`popup-notification ${notification.type}`}>
           <p>{notification.msg}</p>
@@ -238,7 +242,13 @@ const AdminDashboard = () => {
                   <td>{app.lastName}</td>
                   <td>{app.email}</td>
                   <td>{app.project}</td>
-                  <td>{app.resume ? <a href={`http://${API_BASE_URL}/uploads/${app.resume}`} target="_blank" rel="noreferrer">View Resume</a> : "N/A"}</td>
+                  <td>
+                    {app.resume ? (
+                      <a href={`https://${API_BASE_URL}/uploads/${app.resume}`} target="_blank" rel="noreferrer">
+                        View Resume
+                      </a>
+                    ) : "N/A"}
+                  </td>
                   <td>
                     <button className="btn btn-success" onClick={() => handleAccept(app._id)}>Accept</button>
                     <button className="btn btn-danger" onClick={() => handleDecline(app._id)}>Decline</button>
@@ -275,15 +285,11 @@ const AdminDashboard = () => {
                   <td>{app.email}</td>
                   <td>{app.project}</td>
                   <td>
-                       {app.resume ? (
-                   <a 
-                       href={`${import.meta.env.VITE_API_BASE_URL}/uploads/${app.resume}`} 
-                        target="_blank" 
-                        rel="noreferrer"
-                             >
-                         View Resume
-                            </a>
-                               ) : "N/A"}
+                    {app.resume ? (
+                      <a href={`https://${API_BASE_URL}/uploads/${app.resume}`} target="_blank" rel="noreferrer">
+                        View Resume
+                      </a>
+                    ) : "N/A"}
                   </td>
                   <td>
                     <button className="btn" onClick={() => handleEdit(app)}>Edit</button>
@@ -307,89 +313,87 @@ const AdminDashboard = () => {
               &times;
             </button>
             <h3>{editingApplicant ? "Edit Applicant" : "Add New Applicant"}</h3>
-<form
-  onSubmit={editingApplicant ? handleUpdate : handleAddApplicant}
-  className="application-form"
->
-  <input
-    type="text"
-    name="firstName"
-    value={formData.firstName}
-    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-    placeholder="First Name"
-    required
-  />
-  <input
-    type="text"
-    name="lastName"
-    value={formData.lastName}
-    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-    placeholder="Last Name"
-    required
-  />
-  <input
-    type="number"
-    name="age"
-    value={formData.age}
-    onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-    placeholder="Age"
-    required
-  />
-  <input
-    type="text"
-    name="degree"
-    value={formData.degree}
-    onChange={(e) => setFormData({ ...formData, degree: e.target.value })}
-    placeholder="Degree"
-  />
-  <input
-    type="text"
-    name="experience"
-    value={formData.experience}
-    onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-    placeholder="Experience"
-  />
-  <input
-    type="email"
-    name="email"
-    value={formData.email}
-    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-    placeholder="Email"
-    required
-  />
-  <select
-    name="project"
-    value={formData.project}
-    onChange={(e) => setFormData({ ...formData, project: e.target.value })}
-    required
-  >
-    <option value="">Select Project</option>
-    {projects.map((proj, idx) => (
-      <option key={idx} value={proj}>
-        {proj}
-      </option>
-    ))}
-  </select>
+            <form
+              onSubmit={editingApplicant ? handleUpdate : handleAddApplicant}
+              className="application-form"
+            >
+              <input
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                placeholder="First Name"
+                required
+              />
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                placeholder="Last Name"
+                required
+              />
+              <input
+                type="number"
+                name="age"
+                value={formData.age}
+                onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                placeholder="Age"
+                required
+              />
+              <input
+                type="text"
+                name="degree"
+                value={formData.degree}
+                onChange={(e) => setFormData({ ...formData, degree: e.target.value })}
+                placeholder="Degree"
+              />
+              <input
+                type="text"
+                name="experience"
+                value={formData.experience}
+                onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
+                placeholder="Experience"
+              />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="Email"
+                required
+              />
+              <select
+                name="project"
+                value={formData.project}
+                onChange={(e) => setFormData({ ...formData, project: e.target.value })}
+                required
+              >
+                <option value="">Select Project</option>
+                {projects.map((proj, idx) => (
+                  <option key={idx} value={proj}>
+                    {proj}
+                  </option>
+                ))}
+              </select>
 
-  {/* File upload styled as a button */}
-<div className="resume-upload-field">
-  <label htmlFor="resume">Upload Resume (PDF only):</label>
-  <input
-    id="resume"
-    type="file"
-    name="resume"
-    accept=".pdf"
-    onChange={(e) => setFormData({ ...formData, resume: e.target.files[0] })}
-    required={!editingApplicant}
-  />
-</div>
+              {/* File upload */}
+              <div className="resume-upload-field">
+                <label htmlFor="resume">Upload Resume (PDF only):</label>
+                <input
+                  id="resume"
+                  type="file"
+                  name="resume"
+                  accept=".pdf"
+                  onChange={(e) => setFormData({ ...formData, resume: e.target.files[0] })}
+                  required={!editingApplicant}
+                />
+              </div>
 
-
-  <button type="submit" className="btn">
-    {editingApplicant ? "Update Applicant" : "Add Applicant"}
-  </button>
-</form>
-
+              <button type="submit" className="btn">
+                {editingApplicant ? "Update Applicant" : "Add Applicant"}
+              </button>
+            </form>
           </div>
         </div>
       )}
