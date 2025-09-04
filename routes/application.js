@@ -159,7 +159,7 @@ router.put("/:id/accept", async (req, res) => {
           <div style="background-color:#e6f0ed; padding:20px; text-align:center; font-size:14px; color:#555555;">
             <p>Best regards,</p>
             <p><strong>Lifewood Team</strong></p>
-            <p style="margin-top:10px;"><a href="https://yourlifewoodsite.com" style="color:#046241; text-decoration:none;">Visit our website</a></p>
+            <p style="margin-top:10px;"><a href="https://lifewood-web-ph.onrender.com" style="color:#046241; text-decoration:none;">Visit our website</a></p>
           </div>
         </div>
       </div>
@@ -200,7 +200,7 @@ router.put("/:id/decline", async (req, res) => {
           <div style="background-color:#e6f0ed; padding:20px; text-align:center; font-size:14px; color:#555555;">
             <p>Best regards,</p>
             <p><strong>Lifewood Team</strong></p>
-            <p style="margin-top:10px;"><a href="https://yourlifewoodsite.com" style="color:#046241; text-decoration:none;">Visit our website</a></p>
+            <p style="margin-top:10px;"><a href="https://lifewood-web-ph.onrender.com" style="color:#046241; text-decoration:none;">Visit our website</a></p>
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-dotenv.config();
 const cors = require("cors");
+const path = require("path"); // <-- you need this
+
+dotenv.config();
 
 const app = express();
 
@@ -10,8 +12,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve uploaded files
-app.use("/uploads", express.static("uploads"));
+// Serve uploaded files (important line)
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Connect MongoDB
 mongoose.connect(process.env.MONGO_URI, {
