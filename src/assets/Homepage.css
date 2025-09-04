@@ -26,7 +26,7 @@ body {
 }
 
 .navbar .logo {
-  height: 40px;
+  height: 30px;
   width: auto;
 }
 
@@ -61,17 +61,17 @@ body {
 .hero {
   display: flex;
   align-items: center;
-  justify-content: center; /* center horizontally */
-  text-align: center; /* center text inside */
+  justify-content: center; 
+  text-align: center; 
   padding: 100px 65px;
-  min-height: 75vh;
-  background: url('/images/robot-ai.png') center/cover no-repeat;
+  min-height: 50vh;
+  background: url('/images/robot-ai.gif') center/cover no-repeat;
 }
 
 .hero-content {
-  max-width: 650px; /* slightly bigger */
+  max-width: 650px; /* wider for rectangle */
   background: rgba(19, 48, 32, 0.85);
-  padding: 50px; 
+  padding: 40px 60px; /* vertical 40px, horizontal 60px */
   border-radius: 12px;
   color: #fff;
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
@@ -82,7 +82,7 @@ body {
 
 /* Title with spacing */
 .hero-content h1 {
-  font-size: 100px;
+  font-size: 85px;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 20px;
@@ -91,23 +91,25 @@ body {
 
 /* Subtitle */
 .hero-content p {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 30px;
   line-height: 1.4;
 }
 
 /* Button with wiggle animation */
 .hero-content button {
-  padding: 12px 25px;
+  padding: 15px 15px;
   background-color: #ffffff;
   color: #133020;
   border: none;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: 650;
+  font-size: 1.2rem; /* increased font size */
   cursor: pointer;
   transition: all 0.3s ease;
   animation: wiggle 2s infinite; /* wiggle animation */
 }
+
 
 .hero-content button:hover {
   background-color: #ffc370;
