@@ -20,7 +20,7 @@ const LoginForm = () => {
     setError("");
 
     try {
-      const res = await axios.post("https://lifewood-site-4.onrender.com", formData);
+      const res = await axios.post("https://lifewood-site-4.onrender.com/api/auth/login", formData);
 
       if (res.status === 200) {
         // Login successful
