@@ -242,13 +242,13 @@ const AdminDashboard = () => {
                   <td>{app.lastName}</td>
                   <td>{app.email}</td>
                   <td>{app.project}</td>
-<a
-  href={`https://${API_BASE_URL}/uploads/${app.resume}`}
-  target="_blank"
-  rel="noreferrer"
->
-  View Resume
-</a>
+                  <td>
+                    {app.resume ? (
+                      <a href={`https://${API_BASE_URL}/uploads/${app.resume}`} target="_blank" rel="noreferrer">
+                        View Resume
+                      </a>
+                    ) : "N/A"}
+                  </td>
                   <td>
                     <button className="btn btn-success" onClick={() => handleAccept(app._id)}>Accept</button>
                     <button className="btn btn-danger" onClick={() => handleDecline(app._id)}>Decline</button>
