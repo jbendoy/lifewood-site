@@ -19,14 +19,16 @@ const Homepage = () => {
 
       {/* Hero Section */}
       <main className="hero">
-        <div className="hero-left">
-          <h1>Welcome to Lifewood<span> </span></h1>
-          <p>Empowering minds, shaping futures.</p>
+        <div className="hero-content">
+  <h1 className="animated-title">
+  <span className="title-life">Life</span>
+  <span className="title-wood">wood</span>
+</h1>
+          {/* UPDATED: Reverted to the original quote */}
+          <p className="interactive-quote">
+            Empowering minds, shaping futures.
+          </p>
           <button onClick={() => setShowForm(true)}>Apply Now!</button>
-        </div>
-
-        <div className="hero-right">
-          
         </div>
       </main>
 
@@ -60,6 +62,7 @@ const Homepage = () => {
           <p>To be the global champion in Al data solutions, igniting a culture of innovation and sustainability that enriches lives and transforms communities worldwide.</p>
         </div>
       </section>
+      
 
       {/* Footer */}
       <footer className="footer">
