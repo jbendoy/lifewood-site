@@ -273,7 +273,17 @@ const AdminDashboard = () => {
                   <td>{app.degree}</td>
                   <td>{app.email}</td>
                   <td>{app.project}</td>
-                  <td>{app.resume ? <a href={`http://localhost:5000/uploads/${app.resume}`} target="_blank" rel="noreferrer">View Resume</a> : "N/A"}</td>
+                  <td>
+                       {app.resume ? (
+                   <a 
+                       href={`${import.meta.env.VITE_API_BASE_URL}/uploads/${app.resume}`} 
+                        target="_blank" 
+                        rel="noreferrer"
+                             >
+                         View Resume
+                            </a>
+                               ) : "N/A"}
+                  </td>
                   <td>
                     <button className="btn" onClick={() => handleEdit(app)}>Edit</button>
                     <button className="btn btn-danger" onClick={() => handleDelete(app._id)}>Delete</button>
