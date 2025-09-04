@@ -23,9 +23,14 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Routes
 const applicationRoutes = require("./routes/application");
-const auth = require("./middleware/auth");
+const authMiddleware = require("./middleware/auth");
+const authRoutes = require("./routes/auth"); // ✅ added import
 
-app.use("/api/applications", auth, applicationRoutes);
+// ✅ Login/Auth routes
+app.use("/api/auth", authRoutes);
+
+// ✅ Application routes (protected)
+app.use("/api/applications", authMiddleware, applicationRoutes);
 
 // Start server
 const PORT = process.env.PORT || 5000;
