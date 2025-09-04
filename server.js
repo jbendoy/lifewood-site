@@ -23,9 +23,8 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Routes
 const applicationRoutes = require("./routes/application");
-const auth = require("./middleware/auth"); // ✅ middleware
+const auth = require("./middleware/auth");
 
-// Example: protect application routes with auth
 app.use("/api/applications", auth, applicationRoutes);
 
 // Start server
