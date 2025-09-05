@@ -1,5 +1,6 @@
 import React from 'react';
 import "../../assets/AboutPage.css";
+import { FaFacebookF, FaLinkedinIn , FaYoutube} from "react-icons/fa";
 
 const AboutPage = () => {
   return (
@@ -60,15 +61,36 @@ const AboutPage = () => {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
-          <p>&copy; {new Date().getFullYear()} Lifewood. All rights reserved.</p>
-          <nav>
-            <a href="/privacy-policy">Privacy Policy</a>
-            <a href="/terms-of-service">Terms of Service</a>
-            <a href="/contact">Contact</a>
-          </nav>
+                    {/* Footer Text */}
+          <p className="footer-text">© 2025 Lifewood. All rights reserved.</p>
+          {/* Social Media */}
+          <div className="social-links">
+            <a
+              href="https://www.facebook.com/LifewoodPH/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://ph.linkedin.com/company/lifewood-data-technology-ltd."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedinIn />
+            </a>
+            <a
+              href="https://www.youtube.com/@LifewoodDataTechnology"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaYoutube />
+            </a>
+          </div>
+      
+
         </div>
       </footer>
     </div>

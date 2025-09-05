@@ -39,7 +39,7 @@ body {
 }
 
 .navbar nav a:hover {
-  color: #133020;
+  color: #FFC370;
 }
 
 .navbar nav a.login-button {
@@ -175,28 +175,40 @@ body {
 }
 
 .footer {
-  background-color: #ffffff;
-  color: #2c3e50;
-  padding: 40px 50px;
+  background-color: #046241 !important;
+  color: #ffffff !important;
+  padding: 8px 40px;  /* smaller height */
   text-align: center;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
 
 .footer-content p {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  font-size: 13px; /* slightly smaller */
+  color: #ffffff !important;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 15px; /* tighter */
+}
+
+.social-links a {
+  font-size: 24px; /* smaller icons */
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #ffb347;
+}
+
+.footer-text {
   font-size: 14px;
-}
-
-.footer-content nav a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: #2c3e50;
   font-weight: 500;
-  transition: color 0.3s;
-}
-
-.footer-content nav a:hover {
-  color: #133020;
+  margin-top: 5px;
 }
 
 

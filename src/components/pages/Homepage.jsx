@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../assets/Homepage.css";
 import ApplicationForm from "./ApplicationForm"; 
+import { FaFacebookF, FaLinkedinIn , FaYoutube} from "react-icons/fa";
 
 const Homepage = () => {
   const [showForm, setShowForm] = useState(false);
@@ -64,17 +65,38 @@ const Homepage = () => {
       </section>
       
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-content">
-          <p>&copy; {new Date().getFullYear()} Lifewood. All rights reserved.</p>
-          <nav>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Contact</a>
-          </nav>
-        </div>
-      </footer>
+<footer className="footer">
+  <div className="footer-content">    {/* Footer Text */}
+    <p className="footer-text">© 2025 Lifewood. All rights reserved.</p>
+        {/* Footer Text */}
+    {/* Social Media */}
+    <div className="social-links">
+      <a
+        href="https://www.facebook.com/LifewoodPH/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaFacebookF />
+      </a>
+      <a
+        href="https://ph.linkedin.com/company/lifewood-data-technology-ltd."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaLinkedinIn />
+      </a>
+      <a
+        href="https://www.youtube.com/@LifewoodDataTechnology"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaYoutube />
+      </a>
+    </div>
+
+
+  </div>
+</footer>
     </div>
   );
 };
