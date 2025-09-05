@@ -59,3 +59,12 @@
     transform: translateX(-50%) translateY(0);
   }
 }
+.experience-input {
+  width: 100%;
+  min-height: 150px; /* taller input */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical; /* user can drag to resize */
+}

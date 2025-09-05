@@ -129,13 +129,13 @@ const ApplicationForm = () => {
           value={formData.degree}
           onChange={handleChange}
         />
-        <input
-          type="text"
-          name="experience"
-          placeholder="Experience"
-          value={formData.experience}
-          onChange={handleChange}
-        />
+<textarea
+  name="experience"
+  placeholder="Experience"
+  value={formData.experience}
+  onChange={handleChange}
+  className="experience-input"
+/>
         <input
           type="email"
           name="email"
