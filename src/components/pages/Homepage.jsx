@@ -1,31 +1,51 @@
 import React, { useState } from "react";
 import "../../assets/Homepage.css";
 import ApplicationForm from "./ApplicationForm"; 
-import { FaFacebookF, FaLinkedinIn , FaYoutube} from "react-icons/fa";
+import { FaFacebookF, FaLinkedinIn , FaYoutube } from "react-icons/fa";
 
 const Homepage = () => {
   const [showForm, setShowForm] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="homepage">
       {/* Navbar */}
       <header className="navbar">
         <img src="/images/lifewood-logo.png" alt="Lifewood Logo" className="logo" />
-        <nav>
+
+        <nav className="nav-links">
           <a href="#">Home</a>
           <a href="/about-us">About Us</a>
           <a href="/login" className="login-button">Login</a>
         </nav>
+
+        {/* Hamburger for mobile */}
+        <div
+          className={`hamburger ${sidebarOpen ? "open" : ""}`}
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </header>
+
+      {/* Sidebar for mobile */}
+      <div className={`sidebar ${sidebarOpen ? "active" : ""}`}>
+        <a href="#" onClick={() => setSidebarOpen(false)}>Home</a>
+        <a href="/about-us" onClick={() => setSidebarOpen(false)}>About Us</a>
+      </div>
+
+      {/* Overlay */}
+      {sidebarOpen && <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>}
 
       {/* Hero Section */}
       <main className="hero">
         <div className="hero-content">
-  <h1 className="animated-title">
-  <span className="title-life">Life</span>
-  <span className="title-wood">wood</span>
-</h1>
-          {/* UPDATED: Reverted to the original quote */}
+          <h1 className="animated-title">
+            <span className="title-life">Life</span>
+            <span className="title-wood">wood</span>
+          </h1>
           <p className="interactive-quote">
             Empowering minds, shaping futures.
           </p>
@@ -63,40 +83,18 @@ const Homepage = () => {
           <p>To be the global champion in Al data solutions, igniting a culture of innovation and sustainability that enriches lives and transforms communities worldwide.</p>
         </div>
       </section>
-      
 
-<footer className="footer">
-  <div className="footer-content">    {/* Footer Text */}
-    <p className="footer-text">© 2025 Lifewood. All rights reserved.</p>
-        {/* Footer Text */}
-    {/* Social Media */}
-    <div className="social-links">
-      <a
-        href="https://www.facebook.com/LifewoodPH/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaFacebookF />
-      </a>
-      <a
-        href="https://ph.linkedin.com/company/lifewood-data-technology-ltd."
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaLinkedinIn />
-      </a>
-      <a
-        href="https://www.youtube.com/@LifewoodDataTechnology"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaYoutube />
-      </a>
-    </div>
-
-
-  </div>
-</footer>
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <p className="footer-text">© 2025 Lifewood. All rights reserved.</p>
+          <div className="social-links">
+            <a href="https://www.facebook.com/LifewoodPH/" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+            <a href="https://ph.linkedin.com/company/lifewood-data-technology-ltd." target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+            <a href="https://www.youtube.com/@LifewoodDataTechnology" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

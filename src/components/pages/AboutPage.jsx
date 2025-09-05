@@ -1,32 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../../assets/AboutPage.css";
-import { FaFacebookF, FaLinkedinIn , FaYoutube} from "react-icons/fa";
+import { FaFacebookF, FaLinkedinIn , FaYoutube } from "react-icons/fa";
 
 const AboutPage = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="page-container">
       {/* Navbar */}
       <header className="navbar">
         <img src="/images/lifewood-logo.png" alt="Lifewood Logo" className="logo" />
-        <nav>
+
+        {/* Desktop Links */}
+        <nav className="nav-links">
           <a href="/">Home</a>
           <a href="/about-us">About Us</a>
           <a href="/login" className="login-button">Login</a>
         </nav>
+
+        {/* Hamburger */}
+        <div
+          className={`hamburger ${sidebarOpen ? "open" : ""}`}
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        {/* Sidebar for mobile */}
+        {sidebarOpen && (
+          <>
+            <div className="sidebar active">
+              <a href="/">Home</a>
+              <a href="/about-us">About Us</a>
+            </div>
+            <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)}></div>
+          </>
+        )}
       </header>
 
       {/* Main Content */}
       <main className="about-main-content">
         <section className="about-hero-section">
-<div className="title-container">
-  <div className="titles-box">
-    <h1 className="sub-heading">
-      <span className="life">Life</span>
-      <span className="wood">wood</span> Data Technology
-    </h1>
-    <h5 className="main-heading">#ALWAYS ON NEVER OFF</h5>
-  </div>
-</div>
+          <div className="title-container">
+            <div className="titles-box">
+              <h1 className="sub-heading">
+                <span className="life">Life</span>
+                <span className="wood">wood</span> Data Technology
+              </h1>
+              <h5 className="main-heading">#ALWAYS ON NEVER OFF</h5>
+            </div>
+          </div>
+
           {/* First section (text left, image right) */}
           <div className="content-layout">
             <div className="text-column">
@@ -37,7 +63,6 @@ const AboutPage = () => {
                 Our strategic positioning emphasizes Lifewood as a bridge between ASEAN, China, and the world—building harmony, trust, and cooperation across borders, cultures, and industries. With global offices and advanced technology like AI and GPT, we connect diverse people and ideas to create new opportunities.
               </p>
             </div>
-
             <div className="media-column">
               <img src="/images/lifewood-about-us-image.png" alt="Lifewood Team and Work" />
             </div>
@@ -48,7 +73,6 @@ const AboutPage = () => {
             <div className="media-column">
               <img src="/images/lifewood-ai-vision.png" alt="Lifewood AI Vision" />
             </div>
-
             <div className="text-column">
               <p>
                 Based in Malaysia, Lifewood serves as a super-bridge between China and the world, driving progress across Asia and beyond. Our data expertise helps address social and environmental challenges in Malaysia, Singapore, and the wider region.
@@ -64,36 +88,15 @@ const AboutPage = () => {
         </section>
       </main>
 
+      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
-                    {/* Footer Text */}
           <p className="footer-text">© 2025 Lifewood. All rights reserved.</p>
-          {/* Social Media */}
           <div className="social-links">
-            <a
-              href="https://www.facebook.com/LifewoodPH/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://ph.linkedin.com/company/lifewood-data-technology-ltd."
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedinIn />
-            </a>
-            <a
-              href="https://www.youtube.com/@LifewoodDataTechnology"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaYoutube />
-            </a>
+            <a href="https://www.facebook.com/LifewoodPH/" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+            <a href="https://ph.linkedin.com/company/lifewood-data-technology-ltd." target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+            <a href="https://www.youtube.com/@LifewoodDataTechnology" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
           </div>
-      
-
         </div>
       </footer>
     </div>
