@@ -29,17 +29,16 @@
   width: 100%;
   margin: 0;
   padding: 3rem 0 2rem; /* top/bottom padding */
-  background: linear-gradient(135deg, #046241, #028a63);
+  background: url('/images/about-us-bg.jpg') no-repeat center center/cover;
   text-align: center;
   box-sizing: border-box;
 }
 
-/* Make the heading take full width and remove any horizontal margin */
 .title-container .main-heading {
   display: block;
-  width: 100%;      /* full width of container */
-  margin: 0;        /* no auto margins */
-  padding: 0 2rem;  /* optional horizontal padding for small screens */
+  width: 100%;
+  margin: 0;
+  padding: 0 2rem;
   text-align: center; 
   color: #fff;
   font-size: 2.8rem;
@@ -48,20 +47,55 @@
   letter-spacing: 1px;
 }
 
-/* Optional: remove extra left/right padding from page container */
-.page-container {
-  padding: 0; 
-}
-
 .title-divider {
   margin: 1rem auto 0;
   width: 80px;
   height: 3px;
-  background: #fff;
+  background: #FFB347;
   border-radius: 2px;
 }
+/* Transparent beige container for both titles - lighter version */
+.titles-box {
+  display: inline-block;                
+  background: rgba(245, 245, 220, 0.25); /* lighter beige, more transparent */
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(3px);           /* keeps glassy effect */
+  text-align: center;
+}
 
+/* Lifewood main title - now bigger */
+.sub-heading {
+  margin: 0.5rem 0;
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;   /* 👈 default white for whole line */
+}
 
+.sub-heading .life {
+  color: #fff; /* stays white */
+}
+
+.sub-heading .wood {
+  color: #FFB347; /* orange */
+}
+
+/* Always On Never Off - smaller with 3D effect */
+.main-heading {
+  margin: 0.3rem 0;       /* reduce spacing slightly */
+  font-size: 0.9rem;      /* small but readable */
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+
+  /* 3D shadow effect */
+  text-shadow:
+    1px 1px 0 #28a745,
+    2px 2px 0 #1e7e34,
+    3px 3px 5px rgba(0,0,0,0.6);
+}
 /* About & Content Sections Full-Edge */
 .about-main-content,
 .about-hero-section {

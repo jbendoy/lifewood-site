@@ -18,12 +18,15 @@ const AboutPage = () => {
       {/* Main Content */}
       <main className="about-main-content">
         <section className="about-hero-section">
-          {/* Title */}
-          <div className="title-container">
-            <h1 className="main-heading">ALWAYS ON NEVER OFF</h1>
-            <div className="title-divider"></div>
-          </div>
-
+<div className="title-container">
+  <div className="titles-box">
+    <h1 className="sub-heading">
+      <span className="life">Life</span>
+      <span className="wood">wood</span> Data Technology
+    </h1>
+    <h5 className="main-heading">#ALWAYS ON NEVER OFF</h5>
+  </div>
+</div>
           {/* First section (text left, image right) */}
           <div className="content-layout">
             <div className="text-column">
