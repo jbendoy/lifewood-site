@@ -1,8 +1,24 @@
+// src/pages/AdminDashboard.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "../../config"; 
 import "../../assets/Dashboard.css";
 import axios from "axios";
+
+// Custom confirmation modal component
+const ConfirmationModal = ({ message, onConfirm, onCancel }) => {
+  return (
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <p>{message}</p>
+        <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginTop: "20px" }}>
+          <button className="btn btn-danger" onClick={onConfirm}>Yes</button>
+          <button className="btn" onClick={onCancel}>Cancel</button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const AdminDashboard = () => {
   const [applicants, setApplicants] = useState([]);
@@ -20,6 +36,7 @@ const AdminDashboard = () => {
   });
   const [notification, setNotification] = useState({ msg: "", type: "" });
   const [searchTerm, setSearchTerm] = useState("");
+  const [confirmAction, setConfirmAction] = useState({ show: false, type: "", id: null });
 
   const navigate = useNavigate();
 
@@ -86,9 +103,7 @@ const AdminDashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(
-        `https://${API_BASE_URL}/api/applications/${id}`
-      );
+      await axios.delete(`https://${API_BASE_URL}/api/applications/${id}`);
       setApplicants((prev) => prev.filter((app) => app._id !== id));
       showNotification("Applicant deleted successfully!", "error");
     } catch (err) {
@@ -177,9 +192,27 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
-    navigate("/login");
+  // Open confirmation modal instead of window.confirm
+  const handleDeleteClick = (id) => {
+    setConfirmAction({ show: true, type: "delete", id });
+  };
+
+  const handleLogoutClick = () => {
+    setConfirmAction({ show: true, type: "logout" });
+  };
+
+  const handleConfirm = () => {
+    if (confirmAction.type === "delete") {
+      handleDelete(confirmAction.id);
+    } else if (confirmAction.type === "logout") {
+      localStorage.removeItem("isAuthenticated");
+      navigate("/login");
+    }
+    setConfirmAction({ show: false, type: "", id: null });
+  };
+
+  const handleCancel = () => {
+    setConfirmAction({ show: false, type: "", id: null });
   };
 
   const filteredApplicants = applicants.filter((app) => {
@@ -198,7 +231,7 @@ const AdminDashboard = () => {
         <nav>
           <a href="/">Home</a>
           <a href="/about-us">About Us</a>
-          <button onClick={handleLogout} className="logout-btn">Logout</button>
+          <button onClick={handleLogoutClick} className="logout-btn">Logout</button>
         </nav>
       </header>
 
@@ -293,7 +326,7 @@ const AdminDashboard = () => {
                   </td>
                   <td>
                     <button className="btn" onClick={() => handleEdit(app)}>Edit</button>
-                    <button className="btn btn-danger" onClick={() => handleDelete(app._id)}>Delete</button>
+                    <button className="btn btn-danger" onClick={() => handleDeleteClick(app._id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -377,7 +410,6 @@ const AdminDashboard = () => {
                 ))}
               </select>
 
-              {/* File upload */}
               <div className="resume-upload-field">
                 <label htmlFor="resume">Upload Resume (PDF only):</label>
                 <input
@@ -396,6 +428,19 @@ const AdminDashboard = () => {
             </form>
           </div>
         </div>
+      )}
+
+      {/* Confirmation Modal */}
+      {confirmAction.show && (
+        <ConfirmationModal
+          message={
+            confirmAction.type === "delete"
+              ? "Are you sure you want to delete this applicant?"
+              : "Are you sure you want to logout?"
+          }
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+        />
       )}
 
     </div>

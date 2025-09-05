@@ -35,7 +35,7 @@ const LoginForm = () => {
 
   return (
     <div className="login-container">
-      <img src="/images/lifewood-logo.png" alt="Lifewood Logo" className="logo" />
+      <img src="/images/lifewood-logo2.png" alt="Lifewood Logo" className="logo" />
       <h2>Admin Login</h2>
 
       <form className="login-form" onSubmit={handleSubmit}>
