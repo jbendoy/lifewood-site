@@ -4,13 +4,16 @@ import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "../../config"; 
 import "../../assets/Dashboard.css";
 import axios from "axios";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
+import { FaFileExport } from "react-icons/fa";
 
 // Custom confirmation modal component
 const ConfirmationModal = ({ message, onConfirm, onCancel }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <p>{message}</p>
+        <p style={{ textAlign: "center" }}>{message}</p>
         <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginTop: "20px" }}>
           <button className="btn btn-danger" onClick={onConfirm}>Yes</button>
           <button className="btn" onClick={onCancel}>Cancel</button>
@@ -215,6 +218,29 @@ const AdminDashboard = () => {
     setConfirmAction({ show: false, type: "", id: null });
   };
 
+  // Excel export
+  const exportToExcel = () => {
+    if (!applicants.length) return;
+
+    const dataToExport = applicants.map((app) => ({
+      "First Name": app.firstName,
+      "Last Name": app.lastName,
+      Age: app.age,
+      Degree: app.degree,
+      Email: app.email,
+      Project: app.project,
+      Status: app.status,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(dataToExport);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Applicants");
+
+    const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
+    saveAs(blob, "applicants.xlsx");
+  };
+
   const filteredApplicants = applicants.filter((app) => {
     const fullName = `${app.firstName} ${app.lastName}`.toLowerCase();
     return fullName.includes(searchTerm.toLowerCase());
@@ -253,9 +279,18 @@ const AdminDashboard = () => {
           style={{ width: "400px" }}
         />
 
+        {/* Buttons: Add + Export */}
+        <div style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
+          <button className="btn add-user-btn" onClick={() => setAddingApplicant(true)}>
+            + Add Applicant
+          </button>
+          <button className="btn export-btn" onClick={exportToExcel} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+            <FaFileExport /> Export Data
+          </button>
+        </div>
+
         {/* Pending Table */}
         <section className="table-container">
-          <button className="btn add-user-btn" onClick={() => setAddingApplicant(true)}>+ Add Applicant</button>
           <h2>Pending Applications ({pendingApplicants.length})</h2>
           <table className="dashboard-table">
             <thead>
@@ -442,7 +477,6 @@ const AdminDashboard = () => {
           onCancel={handleCancel}
         />
       )}
-
     </div>
   );
 };
