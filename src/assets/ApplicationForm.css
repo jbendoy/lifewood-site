@@ -1,66 +1,61 @@
-/* Popup Modal */
-.modal-content {
-  background-color: #ffffff;
-  padding: 3rem 4rem; /* more space inside */
-  border-radius: 12px;
-  width: 95%;        /* allow more width */
-  max-width: 1000px; /* bigger form modal */
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25); /* formal shadow */
-  font-family: 'Manrope', Arial, sans-serif;
-}
-
-/* Application Form */
 .application-form {
+  max-width: 500px;
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-.application-form h2 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #133020;
-}
-
-.application-form label {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  display: block;
-  color: #2c3e50;
+  gap: 1rem;
 }
 
 .application-form input,
 .application-form select,
-.application-form textarea {
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.1rem;
-  border-radius: 8px;
+.application-form button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 6px;
   border: 1px solid #ccc;
 }
 
-.application-form textarea {
-  min-height: 200px; /* Experience field bigger */
-  resize: vertical;
-}
-
-.application-form button[type="submit"] {
-  padding: 1rem 2rem;
-  background-color: #046241;
+.application-form button {
+  cursor: pointer;
+  background-color: #4caf50;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.application-form button[type="submit"]:hover {
-  background-color: #034b32;
+.application-form button:hover {
+  background-color: #45a049;
+}
+
+/* Notification Popup */
+.notification-popup {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  z-index: 1000;
+  animation: slideDown 0.5s ease;
+}
+
+.notification-popup.success {
+  background-color: #4caf50;
+}
+
+.notification-popup.error {
+  background-color: #f44336;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
