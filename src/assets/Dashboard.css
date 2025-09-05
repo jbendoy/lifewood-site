@@ -161,14 +161,16 @@
 /* Modal Content */
 .modal-content {
   background: #fff;
-  padding: 30px;
+  padding: 20px 25px; /* slightly smaller padding */
   border-radius: 8px;
-  width: 500px;
+  width: 350px;        /* smaller container */
   max-width: 90%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   position: relative;
+  text-align: center;   /* center the message and buttons */
 }
 
+/* Close Button */
 .modal-close-button {
   position: absolute;
   top: 10px;
@@ -178,6 +180,7 @@
   font-size: 22px;
   cursor: pointer;
 }
+
 
 /* Notifications */
 .notification-modal {
